@@ -1,0 +1,39 @@
+<div class='right'>Invoice Number:<%= Math.floor(Math.random()*90000000)+10000000 %></div>
+<br/>
+<br/>    
+<table >
+      
+      <tbody>
+
+        <% _.each(items, function(item) { %>
+            
+            <tr>
+            
+              
+                <div class="well">
+                  <div class="pic" style="float: left; margin-right: 15px"><img src="./imgs/<%= item.get('image') %>" width="100px" height="100px" /></div>
+                  <div class="info">
+                    <ul style="list-style: none;">
+                        <li><p><%= item.get('name') %></p></li>
+                        <li><p><%= item.get('category') %></p></li>
+                        <li><p>Price per Unit: $<%= item.get('price').toFixed(2) %></p></li>
+                        <li><p>Quantity: <%= item.get('quantity') %></p></li>
+                    </ul>
+                  </div>
+                  <div class='right'>
+                      <p>$<%= (item.get('price')*item.get('quantity')).toFixed(2) %></p>
+                  </div>
+                    
+                 
+                </div>
+
+              
+              
+          </tr>
+          
+        <% }); %>
+            <tr><td >Total Amount: $<%= totalAmount.toFixed(2) %></%></td>
+            <td >-Discount Amount: $<%= discountAmount.toFixed(2) %></td>
+            <td class='right'>Final Amount: $<%= (totalAmount-discountAmount).toFixed(2) %></td></tr>
+      </tbody>
+</table>

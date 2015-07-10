@@ -1,0 +1,43 @@
+<table class="table striped">
+      
+      <thead>
+        <div align='right'>
+          Filter by Price
+          <select id='FilterCriteria'>
+            <option value="All">All</option>
+            <option value="High to Low">High to Low</option>
+            <option value="Low to High">Low to High</option>
+            <option value="less than $5">less than $5</option>
+            <option value="$5 - $10">$5 - $10</option>
+            <option value="$10 - $15">$10 - $15</option>
+            <option value="$15 - $20">$15 - $20</option>
+            <option value="over $20">over $20</option>
+          </select>
+        </div>
+      </thead>
+    
+      <tbody>
+
+        <% _.each(items, function(item) { 
+            if(item.get('category') === 'Sports Accessories'){%>
+            <tr>
+            
+              
+                <div class="well row" onclick="window.location='#/details/<%= item.id %>';">
+                  <div class="pic" style="float: left; margin-right: 15px"><img src="./imgs/<%= item.get('image') %>" width="90px" height="90px" /></div>
+                  <div class="info">
+                    <ul style="list-style: none;">
+                        <li><p><%= item.get('name') %></p></li>
+                        <li><p><%= item.get('category') %></p></li
+                        <li><p>Price: $<%= item.get('price').toFixed(2) %></p></li>
+                    </ul>
+                  </div>
+                </div>
+
+              
+              
+          </tr>
+        <% }}); %>
+
+      </tbody>
+</table>
